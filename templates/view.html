@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Your information</h1><hr>
+
+
+<table class="table table-bordered">
+    <thead>
+        <th>Sno</th>
+        <th>Doctor Name</th>
+        <th>Specialised In</th>
+        <th>Contact no</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        {% for row in datas %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{row.NAME}}</td>
+                <td>{{row.SPECIALIST}}</td>
+                <td>{{row.CONTACT}}</td>
+                <td>{{row.EMAIL}}</td>
+                <td><a href='{{url_for("edit_user",uid=row.UID)}}' class='btn btn-primary'>Edit</a></td>
+                <td><a href='{{url_for("delete_user",uid=row.UID)}}' class='btn btn-Danger' onclick=' return confirm("Are you sure ")'>Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
